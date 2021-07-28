@@ -5,4 +5,5 @@ const route = path.join(__dirname, '../', 'legendas')
 
 fn.readDir(route)
     .then(files => fn.elementsEndingWith(files, '.srt'))
+    .then(filesSRT => fn.readMyFiles(filesSRT))
     .then(console.log)
