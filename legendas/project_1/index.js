@@ -2,5 +2,7 @@ const path = require('path')
 const fn = require('./fns')
 
 const route = path.join(__dirname, '../', 'legendas')
-const files = fn.readDir(route)
-console.log(files)
+
+fn.readDir(route)
+    .then(files => fn.elementsEndingWith(files, '.srt'))
+    .then(console.log)
