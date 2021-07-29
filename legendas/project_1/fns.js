@@ -36,9 +36,28 @@ function elementsEndingWith(array, pattern) {
     return array.filter(el => el.endsWith(pattern))
 }
 
+function removeCaseEmpty(array) {
+    return array.filter(el => el.trim())
+}
+
+function removeCaseExists(array, patterText){
+    return array.filter(el => !el.includes(patterText))
+}
+
+function removeCaseNumber(array){
+    return array.filter(el =>{
+        const num = parseInt(el.trim())
+        return num !== num
+    })
+}
+
+
 module.exports = {
     readDir,
     elementsEndingWith,
     readMyFile,
-    readMyFiles
+    readMyFiles,
+    removeCaseEmpty,
+    removeCaseExists,
+    removeCaseNumber
 }
