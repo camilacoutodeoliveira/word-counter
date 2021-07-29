@@ -27,9 +27,9 @@ function readMyFile(route) {
 }
 
 function readMyFiles(routes) {
-    return Promise.all([
+    return Promise.all(
         routes.map(route => readMyFile(route))
-    ])
+    )
 }
 
 function elementsEndingWith(array, pattern) {
