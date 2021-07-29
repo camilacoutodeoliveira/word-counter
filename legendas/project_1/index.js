@@ -3,6 +3,12 @@ const fn = require('./fns')
 
 const route = path.join(__dirname, '../', 'legendas')
 
+const simbols = [
+    '.', '?', '-', ',', '"', '♪',
+    '_', '<i>', '</i>', '\r', '[', ']',
+    '(', ')'
+]
+
 fn.readDir(route)
     // .then(files => fn.elementsEndingWith(files, '.srt')) o mesmo da linha de baixo
     .then(fn.elementsEndingWith('.srt'))
@@ -13,4 +19,5 @@ fn.readDir(route)
     // .then(lines => fn.removeCaseExists('-->')(lines)) o mesmo da linha de baixo
     .then(fn.removeCaseExists('-->'))
     .then(fn.removeCaseNumber)
+    .then(fn.removeSimbols(simbols))
     .then(console.log)

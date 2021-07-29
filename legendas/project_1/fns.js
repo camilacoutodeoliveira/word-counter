@@ -33,7 +33,7 @@ function readMyFiles(routes) {
 }
 
 function elementsEndingWith(pattern) {
-    return function(array){
+    return function (array) {
         return array.filter(el => el.endsWith(pattern))
     }
 }
@@ -42,17 +42,30 @@ function removeCaseEmpty(array) {
     return array.filter(el => el.trim())
 }
 
-function removeCaseExists(patterText){
-    return function(array){
+function removeCaseExists(patterText) {
+    return function (array) {
         return array.filter(el => !el.includes(patterText))
     }
 }
 
-function removeCaseNumber(array){
-    return array.filter(el =>{
+function removeCaseNumber(array) {
+    return array.filter(el => {
         const num = parseInt(el.trim())
         return num !== num
     })
+}
+
+function removeSimbols(simbols) {
+    return function (array) {
+        return array.map(el => {
+            let newText = el
+            simbols.forEach(simbol => {
+                newText = newText.split(simbol).join('')
+            })
+            return newText
+        })
+    }
+
 }
 
 
@@ -63,5 +76,6 @@ module.exports = {
     readMyFiles,
     removeCaseEmpty,
     removeCaseExists,
-    removeCaseNumber
+    removeCaseNumber,
+    removeSimbols
 }
