@@ -32,16 +32,20 @@ function readMyFiles(routes) {
     )
 }
 
-function elementsEndingWith(array, pattern) {
-    return array.filter(el => el.endsWith(pattern))
+function elementsEndingWith(pattern) {
+    return function(array){
+        return array.filter(el => el.endsWith(pattern))
+    }
 }
 
 function removeCaseEmpty(array) {
     return array.filter(el => el.trim())
 }
 
-function removeCaseExists(array, patterText){
-    return array.filter(el => !el.includes(patterText))
+function removeCaseExists(patterText){
+    return function(array){
+        return array.filter(el => !el.includes(patterText))
+    }
 }
 
 function removeCaseNumber(array){
