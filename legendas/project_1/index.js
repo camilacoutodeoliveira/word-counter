@@ -14,18 +14,6 @@ const simbols = [
 // const splitWords = allContent => allContent.split(' ')
 
 
-function groupWords(words) {
-    return words.reduce((acc, word) => {
-        const w = word.toLowerCase()
-        if (acc[w]) {
-            acc[w] += 1
-        } else {
-            acc[w] = 1
-        }
-        return acc
-    }, {})
-}
-
 fn.readDir(route)
     // .then(files => fn.elementsEndingWith(files, '.srt')) o mesmo da linha de baixo
     .then(fn.elementsEndingWith('.srt'))
@@ -45,5 +33,6 @@ fn.readDir(route)
     // .then(splitWords)
     .then(fn.removeCaseEmpty)
     .then(fn.removeCaseNumber)
-    .then(groupWords)
+    .then(fn.groupWords)
+    .then(fn.orderByNumber('qtde', 'desc'))
     .then(console.log)
