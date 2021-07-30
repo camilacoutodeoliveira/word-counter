@@ -65,7 +65,16 @@ function removeSimbols(simbols) {
             return newText
         })
     }
+}
 
+function joinElements(array){
+    return array.join(' ')
+}
+
+function splitBy(simbol){
+    return  function(item) {
+        return item.split(simbol)
+    }
 }
 
 
@@ -77,5 +86,7 @@ module.exports = {
     removeCaseEmpty,
     removeCaseExists,
     removeCaseNumber,
-    removeSimbols
+    removeSimbols,
+    joinElements,
+    splitBy
 }
