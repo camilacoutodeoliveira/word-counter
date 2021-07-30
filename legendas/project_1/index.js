@@ -14,8 +14,16 @@ const simbols = [
 // const splitWords = allContent => allContent.split(' ')
 
 
-function groupWords(){
-    //reduce
+function groupWords(words) {
+    return words.reduce((acc, word) => {
+        const w = word.toLowerCase()
+        if (acc[w]) {
+            acc[w] += 1
+        } else {
+            acc[w] = 1
+        }
+        return acc
+    }, {})
 }
 
 fn.readDir(route)
@@ -36,4 +44,6 @@ fn.readDir(route)
     .then(fn.splitBy(' '))
     // .then(splitWords)
     .then(fn.removeCaseEmpty)
+    .then(fn.removeCaseNumber)
+    .then(groupWords)
     .then(console.log)
